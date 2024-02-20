@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public  class CalculatorTest {
     @Test
@@ -30,20 +30,21 @@ public  class CalculatorTest {
         assertEquals(2,Calculator.divide(6,3));
     }
 
-    @Test
-    public void testDivideByZero() {
-        Calculator.divide(10,0);
-    }
-
     @ParameterizedTest
     @MethodSource("dataProviderForAdd")
     public void testAddWithDataProviders(int a,int b, int expected) {
         assertEquals(expected,Calculator.add(a,b));
     }
 
+
+    @Test
+    public void testDivideByZero() {
+        Calculator.divide(10,0);
+    }
+
     public static Stream<Object[]> dataProviderForAdd() {
         return Stream.of(
-                new Object[]{1,2,0},
+                new Object[]{1,2,3},
                 new Object[]{2,4,6},
                 new Object[]{-1,1,0},
                 new Object[]{3,3,6},
